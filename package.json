@@ -1,4 +1,4 @@
-{
+  {
   "name": "teste-ed",
   "version": "0.0.1",
   "description": "A Quasar Project",
@@ -9,8 +9,10 @@
   "scripts": {
     "test": "echo \"No test specified\" && exit 0",
     "dev": "quasar dev",
-    "build": "quasar build",
-    "postinstall": "quasar prepare"
+    "build": "node scripts/build.js",
+    "postinstall": "quasar prepare",
+    "deploy": "npm run build && node scripts/deploy.js",
+    "test:prod": "serve dist/spa -p 8080"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
