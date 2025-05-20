@@ -75,7 +75,7 @@
 
       const variables = {
         page: currentPage.value,
-        name: searchName.value.trim() || undefined // Envia `null` se vazio
+        name: searchName.value.trim() || undefined
       }
 
       const data = await client.request(query, variables)
@@ -88,7 +88,7 @@
         characters.value = []
       }
     } catch (err) {
-      error.value = "Erro ao buscar personagens: " + err.message
+      error.value = "Não encontrado " + err.message
     } finally {
       loading.value = false
     }
