@@ -41,6 +41,9 @@ export default defineConfig((/* ctx */) => {
       },
 
       vueRouterMode: 'history', // available values: 'hash', 'history'
+      html: {
+        template: 'src/index.template.html'
+      }
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,
@@ -64,7 +67,7 @@ export default defineConfig((/* ctx */) => {
       // ]
     },
 
-    // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#devserver
+    // Full list of options: https://v2..dev/quasar-cli-vite/quasar-config-file#devserver
     devServer: {
       // https: true,
       open: true // opens browser window automatically

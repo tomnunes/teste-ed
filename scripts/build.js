@@ -27,4 +27,24 @@ staticFiles.forEach(file => {
   }
 })
 
+const indexPath = path.join(__dirname, '../dist/spa/index.html')
+let indexContent = fs.readFileSync(indexPath, 'utf8')
+
+// Injeta o script de redirecionamento ANTES do q-app
+indexContent = indexContent.replace(
+  '<div id="q-app"></div>',
+  `<script>
+    (function() {
+      const repo = 'teste-ed';
+      if (!window.location.pathname.startsWith('/' + repo + '/') {
+        sessionStorage.setItem('redirect', window.location.pathname);
+        window.location.replace('/' + repo + '/');
+      }
+    })();
+  </script>
+  <div id="q-app"></div>`
+)
+
+fs.writeFileSync(indexPath, indexContent)
+
 console.log('Build completo com arquivos estáticos!')

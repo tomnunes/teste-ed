@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Redirecionando...</title>
-  <script>
-    sessionStorage.redirect = location.href.replace('/teste-ed', '');
-    location.replace('/teste-ed/');
-  </script>
-</head>
-<body>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecionando...</title>
+    <script>
+      const pathSegments = window.location.pathname.split('/');
+      const repoName = 'teste-ed';
+      
+      if (!pathSegments.includes(repoName)) {
+        const newPath = `/${repoName}${window.location.pathname}`;
+        window.history.replaceState({}, '', newPath);
+        window.location.reload();
+      }
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <h1>Redirecionamento necessário</h1>
+      <p>Por favor, habilite JavaScript ou acesse <a id="baseLink" href="/teste-ed/">página inicial</a>.</p>
+      <script>
+        document.getElementById('baseLink').href = `/${repoName}/`;
+      </script>
+    </noscript>
+  </body>
 </html>
