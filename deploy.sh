@@ -1,19 +1,18 @@
 #!/usr/bin/env sh
 
-# Aborta em erros
 set -e
 
-# Build
 quasar build
 
-# Navega para a pasta de output
 cd dist/spa
+
+# Garante que o 404.html seja copiado
+cp ../../../src/static/404.html .
 
 git init
 git add -A
 git commit -m 'deploy'
 
-# Publica na branch gh-pages
-git push -f git@github.com:tomnunes/teste-ed.git main:gh-pages
+git push -f git@github.com:tomnunes/teste-ed.git HEAD:main
 
 cd -
