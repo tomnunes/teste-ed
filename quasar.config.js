@@ -43,21 +43,23 @@ export default defineConfig((/* ctx */) => {
       vueRouterMode: 'history', // available values: 'hash', 'history'
       html: {
         template: 'src/index.template.html'
-      }
+      },
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,
 
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-      publicPath: '/teste-ed/',
+      publicPath: process.env.NODE_ENV === 'production'
+        ? '/teste-ed/'
+        : '/',
       // analyze: true,
       // env: {},
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
       // polyfillModulePreload: true,
-      distDir: 'dist/spa'
+      distDir: 'docs'
 
       // extendViteConf (viteConf) {},
       // viteVuePluginOptions: {},
