@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <script>
-  sessionStorage.redirect = location.pathname;
-  location.replace('/teste-ed/');
+  const repo = 'teste-ed';
+  const path = window.location.pathname;
+  
+  if (!path.startsWith(`/${repo}/`)) {
+    const newPath = `/${repo}${path.startsWith('/') ? '' : '/'}${path}`;
+    window.history.replaceState({}, '', newPath);
+    window.location.reload();
+  }
 </script>

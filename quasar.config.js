@@ -53,6 +53,9 @@ export default defineConfig((/* ctx */) => {
       publicPath: process.env.NODE_ENV === 'production'
         ? '/teste-ed/'
         : '/',
+      vite: {
+        base: '/teste-ed/'
+      }
       // analyze: true,
       // env: {},
       // rawDefine: {}
